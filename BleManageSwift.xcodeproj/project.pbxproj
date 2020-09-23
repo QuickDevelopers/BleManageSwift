@@ -1,0 +1,413 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BCDEA0E1251AFA5700DEEE66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0E0251AFA5700DEEE66 /* AppDelegate.swift */; };
+		BCDEA0E3251AFA5700DEEE66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0E2251AFA5700DEEE66 /* SceneDelegate.swift */; };
+		BCDEA0E5251AFA5700DEEE66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0E4251AFA5700DEEE66 /* ViewController.swift */; };
+		BCDEA0E8251AFA5700DEEE66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCDEA0E6251AFA5700DEEE66 /* Main.storyboard */; };
+		BCDEA0EA251AFA5A00DEEE66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCDEA0E9251AFA5A00DEEE66 /* Assets.xcassets */; };
+		BCDEA0ED251AFA5A00DEEE66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCDEA0EB251AFA5A00DEEE66 /* LaunchScreen.storyboard */; };
+		BCDEA0F9251AFB0400DEEE66 /* AddDeviceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0F8251AFB0400DEEE66 /* AddDeviceView.swift */; };
+		BCDEA0FB251AFB7E00DEEE66 /* BleManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0FA251AFB7E00DEEE66 /* BleManage.swift */; };
+		BCDEA0FD251AFB9600DEEE66 /* BleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0FC251AFB9600DEEE66 /* BleModel.swift */; };
+		BCDEA0FF251AFBAF00DEEE66 /* BleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0FE251AFBAF00DEEE66 /* BleLogger.swift */; };
+		BCDEA101251AFBC600DEEE66 /* BleEventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA100251AFBC600DEEE66 /* BleEventBus.swift */; };
+		BCDEA103251AFBE700DEEE66 /* BleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA102251AFBE700DEEE66 /* BleExtension.swift */; };
+		BCDEA105251AFC1900DEEE66 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA104251AFC1900DEEE66 /* HomeViewController.swift */; };
+		BCDEA107251AFC3000DEEE66 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA106251AFC3000DEEE66 /* DetailViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BCDEA0DD251AFA5700DEEE66 /* BleManageSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleManageSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCDEA0E0251AFA5700DEEE66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BCDEA0E2251AFA5700DEEE66 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BCDEA0E4251AFA5700DEEE66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BCDEA0E7251AFA5700DEEE66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BCDEA0E9251AFA5A00DEEE66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCDEA0EC251AFA5A00DEEE66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BCDEA0EE251AFA5A00DEEE66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCDEA0F8251AFB0400DEEE66 /* AddDeviceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDeviceView.swift; sourceTree = "<group>"; };
+		BCDEA0FA251AFB7E00DEEE66 /* BleManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleManage.swift; sourceTree = "<group>"; };
+		BCDEA0FC251AFB9600DEEE66 /* BleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleModel.swift; sourceTree = "<group>"; };
+		BCDEA0FE251AFBAF00DEEE66 /* BleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleLogger.swift; sourceTree = "<group>"; };
+		BCDEA100251AFBC600DEEE66 /* BleEventBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleEventBus.swift; sourceTree = "<group>"; };
+		BCDEA102251AFBE700DEEE66 /* BleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleExtension.swift; sourceTree = "<group>"; };
+		BCDEA104251AFC1900DEEE66 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BCDEA106251AFC3000DEEE66 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCDEA0DA251AFA5700DEEE66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BCDEA0D4251AFA5700DEEE66 = {
+			isa = PBXGroup;
+			children = (
+				BCDEA0DF251AFA5700DEEE66 /* BleManageSwift */,
+				BCDEA0DE251AFA5700DEEE66 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BCDEA0DE251AFA5700DEEE66 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCDEA0DD251AFA5700DEEE66 /* BleManageSwift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCDEA0DF251AFA5700DEEE66 /* BleManageSwift */ = {
+			isa = PBXGroup;
+			children = (
+				BCDEA0F6251AFAAE00DEEE66 /* Demo */,
+				BCDEA0F5251AFAA400DEEE66 /* Main */,
+				BCDEA0F4251AFA6D00DEEE66 /* BleManage */,
+				BCDEA0EE251AFA5A00DEEE66 /* Info.plist */,
+			);
+			path = BleManageSwift;
+			sourceTree = "<group>";
+		};
+		BCDEA0F4251AFA6D00DEEE66 /* BleManage */ = {
+			isa = PBXGroup;
+			children = (
+				BCDEA0FA251AFB7E00DEEE66 /* BleManage.swift */,
+				BCDEA0FC251AFB9600DEEE66 /* BleModel.swift */,
+				BCDEA0FE251AFBAF00DEEE66 /* BleLogger.swift */,
+				BCDEA100251AFBC600DEEE66 /* BleEventBus.swift */,
+				BCDEA102251AFBE700DEEE66 /* BleExtension.swift */,
+			);
+			path = BleManage;
+			sourceTree = "<group>";
+		};
+		BCDEA0F5251AFAA400DEEE66 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				BCDEA0E0251AFA5700DEEE66 /* AppDelegate.swift */,
+				BCDEA0E2251AFA5700DEEE66 /* SceneDelegate.swift */,
+				BCDEA0E4251AFA5700DEEE66 /* ViewController.swift */,
+				BCDEA0E6251AFA5700DEEE66 /* Main.storyboard */,
+				BCDEA0E9251AFA5A00DEEE66 /* Assets.xcassets */,
+				BCDEA0EB251AFA5A00DEEE66 /* LaunchScreen.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		BCDEA0F6251AFAAE00DEEE66 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				BCDEA0F7251AFAED00DEEE66 /* View */,
+				BCDEA104251AFC1900DEEE66 /* HomeViewController.swift */,
+				BCDEA106251AFC3000DEEE66 /* DetailViewController.swift */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		BCDEA0F7251AFAED00DEEE66 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BCDEA0F8251AFB0400DEEE66 /* AddDeviceView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BCDEA0DC251AFA5700DEEE66 /* BleManageSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCDEA0F1251AFA5A00DEEE66 /* Build configuration list for PBXNativeTarget "BleManageSwift" */;
+			buildPhases = (
+				BCDEA0D9251AFA5700DEEE66 /* Sources */,
+				BCDEA0DA251AFA5700DEEE66 /* Frameworks */,
+				BCDEA0DB251AFA5700DEEE66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BleManageSwift;
+			productName = BleManageSwift;
+			productReference = BCDEA0DD251AFA5700DEEE66 /* BleManageSwift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCDEA0D5251AFA5700DEEE66 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1140;
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = RND;
+				TargetAttributes = {
+					BCDEA0DC251AFA5700DEEE66 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+				};
+			};
+			buildConfigurationList = BCDEA0D8251AFA5700DEEE66 /* Build configuration list for PBXProject "BleManageSwift" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BCDEA0D4251AFA5700DEEE66;
+			productRefGroup = BCDEA0DE251AFA5700DEEE66 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCDEA0DC251AFA5700DEEE66 /* BleManageSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCDEA0DB251AFA5700DEEE66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCDEA0ED251AFA5A00DEEE66 /* LaunchScreen.storyboard in Resources */,
+				BCDEA0EA251AFA5A00DEEE66 /* Assets.xcassets in Resources */,
+				BCDEA0E8251AFA5700DEEE66 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCDEA0D9251AFA5700DEEE66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCDEA107251AFC3000DEEE66 /* DetailViewController.swift in Sources */,
+				BCDEA0E5251AFA5700DEEE66 /* ViewController.swift in Sources */,
+				BCDEA0E1251AFA5700DEEE66 /* AppDelegate.swift in Sources */,
+				BCDEA0F9251AFB0400DEEE66 /* AddDeviceView.swift in Sources */,
+				BCDEA101251AFBC600DEEE66 /* BleEventBus.swift in Sources */,
+				BCDEA0FF251AFBAF00DEEE66 /* BleLogger.swift in Sources */,
+				BCDEA105251AFC1900DEEE66 /* HomeViewController.swift in Sources */,
+				BCDEA0E3251AFA5700DEEE66 /* SceneDelegate.swift in Sources */,
+				BCDEA103251AFBE700DEEE66 /* BleExtension.swift in Sources */,
+				BCDEA0FB251AFB7E00DEEE66 /* BleManage.swift in Sources */,
+				BCDEA0FD251AFB9600DEEE66 /* BleModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BCDEA0E6251AFA5700DEEE66 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCDEA0E7251AFA5700DEEE66 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BCDEA0EB251AFA5A00DEEE66 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCDEA0EC251AFA5A00DEEE66 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BCDEA0EF251AFA5A00DEEE66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BCDEA0F0251AFA5A00DEEE66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BCDEA0F2251AFA5A00DEEE66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 4B5F6ELE34;
+				INFOPLIST_FILE = BleManageSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rnd.BleManageSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BCDEA0F3251AFA5A00DEEE66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 4B5F6ELE34;
+				INFOPLIST_FILE = BleManageSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rnd.BleManageSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCDEA0D8251AFA5700DEEE66 /* Build configuration list for PBXProject "BleManageSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCDEA0EF251AFA5A00DEEE66 /* Debug */,
+				BCDEA0F0251AFA5A00DEEE66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCDEA0F1251AFA5A00DEEE66 /* Build configuration list for PBXNativeTarget "BleManageSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCDEA0F2251AFA5A00DEEE66 /* Debug */,
+				BCDEA0F3251AFA5A00DEEE66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCDEA0D5251AFA5700DEEE66 /* Project object */;
+}
