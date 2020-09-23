@@ -87,6 +87,15 @@ pod try BleManageSwift
 ![image](https://img-blog.csdnimg.cn/20200923143103894.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ExOTg5MjE0,size_16,color_FFFFFF,t_70)
 
 
+首先导入
+
+```java
+
+import BleManageSwift
+
+```
+
+
 开始扫描设备
 
 ```swift
