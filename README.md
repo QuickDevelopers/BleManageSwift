@@ -21,8 +21,6 @@
 
 Installation Guide for BleManageSwift
 
-You want to add pod 'BleManageSwift', '~> 1.0.3' similar to the following to your Podfile:
-
 ```java
 target 'MyApp' do
   pod 'BleManageSwift', '~> 1.0.4'
