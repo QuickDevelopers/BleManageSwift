@@ -26,6 +26,25 @@ target 'MyApp' do
 end
 
 ```
+
+如果你使用的时候报以下的错误
+
+```java
+[!] CocoaPods could not find compatible versions for pod "BleManageSwift":
+  In Podfile:
+    BleManageSwift (~> 1.0.3)
+
+None of your spec sources contain a spec satisfying the dependency: `BleManageSwift (~> 1.0.3)`.
+
+You have either:
+ * out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.
+ * mistyped the name or version.
+ * not added the source repo that hosts the Podspec to your Podfile.
+
+```
+
+运行 pod repo update 或者 pod install --repo-update
+
 Then run a pod install inside your terminal, or from CocoaPods.app.
 
 Alternatively to give it a test run, run the command:
