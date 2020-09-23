@@ -18,7 +18,6 @@
 		BCDEA0FD251AFB9600DEEE66 /* BleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0FC251AFB9600DEEE66 /* BleModel.swift */; };
 		BCDEA0FF251AFBAF00DEEE66 /* BleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0FE251AFBAF00DEEE66 /* BleLogger.swift */; };
 		BCDEA101251AFBC600DEEE66 /* BleEventBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA100251AFBC600DEEE66 /* BleEventBus.swift */; };
-		BCDEA103251AFBE700DEEE66 /* BleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA102251AFBE700DEEE66 /* BleExtension.swift */; };
 		BCDEA105251AFC1900DEEE66 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA104251AFC1900DEEE66 /* HomeViewController.swift */; };
 		BCDEA107251AFC3000DEEE66 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA106251AFC3000DEEE66 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +36,6 @@
 		BCDEA0FC251AFB9600DEEE66 /* BleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleModel.swift; sourceTree = "<group>"; };
 		BCDEA0FE251AFBAF00DEEE66 /* BleLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleLogger.swift; sourceTree = "<group>"; };
 		BCDEA100251AFBC600DEEE66 /* BleEventBus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleEventBus.swift; sourceTree = "<group>"; };
-		BCDEA102251AFBE700DEEE66 /* BleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleExtension.swift; sourceTree = "<group>"; };
 		BCDEA104251AFC1900DEEE66 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BCDEA106251AFC3000DEEE66 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +85,6 @@
 				BCDEA0FC251AFB9600DEEE66 /* BleModel.swift */,
 				BCDEA0FE251AFBAF00DEEE66 /* BleLogger.swift */,
 				BCDEA100251AFBC600DEEE66 /* BleEventBus.swift */,
-				BCDEA102251AFBE700DEEE66 /* BleExtension.swift */,
 			);
 			path = BleManage;
 			sourceTree = "<group>";
@@ -202,7 +199,6 @@
 				BCDEA0FF251AFBAF00DEEE66 /* BleLogger.swift in Sources */,
 				BCDEA105251AFC1900DEEE66 /* HomeViewController.swift in Sources */,
 				BCDEA0E3251AFA5700DEEE66 /* SceneDelegate.swift in Sources */,
-				BCDEA103251AFBE700DEEE66 /* BleExtension.swift in Sources */,
 				BCDEA0FB251AFB7E00DEEE66 /* BleManage.swift in Sources */,
 				BCDEA0FD251AFB9600DEEE66 /* BleModel.swift in Sources */,
 			);
