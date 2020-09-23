@@ -1,6 +1,9 @@
 # BleManageSwift
  This is BleManageSwift
 
+
+ 非常感谢 cesarferreira https://github.com/cesarferreira/SwiftEventBus/commits?author=cesarferreira 提供的 SwiftEventBus
+
 快速度开发蓝牙工具
 
 安装介绍 只能支持 ios10.0以上版本
@@ -9,7 +12,7 @@
 --------------------------------------------------------------------------------
  🎉  Congrats
 
- 🚀  BleManageSwift (1.0.1) successfully published
+ 🚀  BleManageSwift (1.0.4) successfully published
  📅  September 23rd, 01:51
  🌎  https://cocoapods.org/pods/BleManageSwift
  👍  Tell your friends!
@@ -18,14 +21,33 @@
 
 Installation Guide for BleManageSwift
 
-You want to add pod 'BleManageSwift', '~> 1.0' similar to the following to your Podfile:
+You want to add pod 'BleManageSwift', '~> 1.0.3' similar to the following to your Podfile:
 
 ```java
 target 'MyApp' do
-  pod 'BleManageSwift', '~> 1.0'
+  pod 'BleManageSwift', '~> 1.0.4'
 end
 
 ```
+
+如果你使用的时候报以下的错误
+
+```java
+[!] CocoaPods could not find compatible versions for pod "BleManageSwift":
+  In Podfile:
+    BleManageSwift (~> 1.0.4)
+
+None of your spec sources contain a spec satisfying the dependency: `BleManageSwift (~> 1.0.4)`.
+
+You have either:
+ * out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.
+ * mistyped the name or version.
+ * not added the source repo that hosts the Podspec to your Podfile.
+
+```
+
+运行 pod repo update 或者 pod install --repo-update
+
 Then run a pod install inside your terminal, or from CocoaPods.app.
 
 Alternatively to give it a test run, run the command:
@@ -33,6 +55,7 @@ Alternatively to give it a test run, run the command:
 pod try BleManageSwift
 
 ### 更新日期 2020/9/23
+版本更改为v1.0.3
 
 版本1.0.1紧急处理了不能调用方法的bug
 
@@ -55,11 +78,11 @@ pod try BleManageSwift
 
 效果图
 
-![image](https://github.com/QuickDevelopers/BleManageSwift/blob/master/BleManageSwift/Demo/Images/1.png)
+![image](https://img-blog.csdnimg.cn/20200923143016211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ExOTg5MjE0,size_16,color_FFFFFF,t_70)
 
-![image](https://github.com/QuickDevelopers/BleManageSwift/blob/master/BleManageSwift/Demo/Images/2.png)
+![image](https://img-blog.csdnimg.cn/20200923143038852.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ExOTg5MjE0,size_16,color_FFFFFF,t_70)
 
-![image](https://github.com/QuickDevelopers/BleManageSwift/blob/master/BleManageSwift/Demo/Images/3.png)
+![image](https://img-blog.csdnimg.cn/20200923143103894.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ExOTg5MjE0,size_16,color_FFFFFF,t_70)
 
 
 开始扫描设备

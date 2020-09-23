@@ -10,7 +10,7 @@ import UIKit
 import CoreBluetooth
 
 
-open class BleManage: NSObject{
+public class BleManage: NSObject{
     private var centerManager = CBCentralManager()
     
     //连接成功的蓝牙列表
