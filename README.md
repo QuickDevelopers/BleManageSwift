@@ -33,6 +33,7 @@ Alternatively to give it a test run, run the command:
 pod try BleManageSwift
 
 ### 更新日期 2020/9/23
+版本更改为v1.0.3
 
 版本1.0.1紧急处理了不能调用方法的bug
 

@@ -3,7 +3,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "BleManageSwift"
-  spec.version      = "1.0.1"
+  spec.version      = "1.0.3"
   spec.summary      = "Bluetooth help quick BleManageSwift"
 
  
