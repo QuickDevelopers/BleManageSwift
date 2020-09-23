@@ -56,11 +56,11 @@ pod try BleManageSwift
 
 效果图
 
-![image](https://github.com/QuickDevelopers/BleManageSwift/blob/master/BleManageSwift/Demo/Images/1.png)
+![image](https://img-blog.csdnimg.cn/20200923143016211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ExOTg5MjE0,size_16,color_FFFFFF,t_70)
 
-![image](https://github.com/QuickDevelopers/BleManageSwift/blob/master/BleManageSwift/Demo/Images/2.png)
+![image](https://img-blog.csdnimg.cn/20200923143038852.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ExOTg5MjE0,size_16,color_FFFFFF,t_70)
 
-![image](https://github.com/QuickDevelopers/BleManageSwift/blob/master/BleManageSwift/Demo/Images/3.png)
+![image](https://img-blog.csdnimg.cn/20200923143103894.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ExOTg5MjE0,size_16,color_FFFFFF,t_70)
 
 
 开始扫描设备
