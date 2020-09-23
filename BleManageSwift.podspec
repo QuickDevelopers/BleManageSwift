@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
 
  
   spec.description  = <<-DESC
-  This is quickly Bluetooth help , it is help quick more device connect. so you use very smart!
+  welcome to ! This is quickly Bluetooth help , it is help quick more device connect. so you use very smart!
                    DESC
 
   spec.homepage     = "https://github.com/QuickDevelopers/BleManageSwift"
