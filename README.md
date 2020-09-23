@@ -1,6 +1,7 @@
 # BleManageSwift
  This is BleManageSwift
 
+### new version 1.0.5
 
  非常感谢 cesarferreira https://github.com/cesarferreira/SwiftEventBus/commits?author=cesarferreira 提供的 SwiftEventBus
 
@@ -12,7 +13,7 @@
 --------------------------------------------------------------------------------
  🎉  Congrats
 
- 🚀  BleManageSwift (1.0.4) successfully published
+ 🚀  BleManageSwift (current version) successfully published
  📅  September 23rd, 01:51
  🌎  https://cocoapods.org/pods/BleManageSwift
  👍  Tell your friends!
@@ -23,7 +24,7 @@ Installation Guide for BleManageSwift
 
 ```java
 target 'MyApp' do
-  pod 'BleManageSwift', '~> 1.0.4'
+  pod 'BleManageSwift', '~> current version'
 end
 
 ```
@@ -33,9 +34,9 @@ end
 ```java
 [!] CocoaPods could not find compatible versions for pod "BleManageSwift":
   In Podfile:
-    BleManageSwift (~> 1.0.4)
+    BleManageSwift (~> current version)
 
-None of your spec sources contain a spec satisfying the dependency: `BleManageSwift (~> 1.0.4)`.
+None of your spec sources contain a spec satisfying the dependency: `BleManageSwift (~> current version)`.
 
 You have either:
  * out-of-date source repos which you can update with `pod repo update` or with `pod install --repo-update`.
@@ -53,7 +54,10 @@ Alternatively to give it a test run, run the command:
 pod try BleManageSwift
 
 ### 更新日期 2020/9/23
-版本更改为v1.0.3
+
+版本 1.0.5 delete don't need BleExtension 删除不要的额外扩展
+
+版本更改为v1.0.3 v1.0.4
 
 版本1.0.1紧急处理了不能调用方法的bug
 
