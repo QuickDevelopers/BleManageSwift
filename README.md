@@ -9,7 +9,7 @@
 --------------------------------------------------------------------------------
  🎉  Congrats
 
- 🚀  BleManageSwift (1.0.1) successfully published
+ 🚀  BleManageSwift (1.0.3) successfully published
  📅  September 23rd, 01:51
  🌎  https://cocoapods.org/pods/BleManageSwift
  👍  Tell your friends!
@@ -18,11 +18,11 @@
 
 Installation Guide for BleManageSwift
 
-You want to add pod 'BleManageSwift', '~> 1.0' similar to the following to your Podfile:
+You want to add pod 'BleManageSwift', '~> 1.0.3' similar to the following to your Podfile:
 
 ```java
 target 'MyApp' do
-  pod 'BleManageSwift', '~> 1.0'
+  pod 'BleManageSwift', '~> 1.0.3'
 end
 
 ```
