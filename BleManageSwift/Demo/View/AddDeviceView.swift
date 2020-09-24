@@ -88,7 +88,7 @@ class AddDeviceView: UIView {
     }
     
     func initData() {
-        BleManage.shared.startScan()
+        BleManage.shared.scan()
         BleEventBus.onMainThread(self, name: "bleEvent"){
             result in
             //self.refresh.endRefreshing()
@@ -135,7 +135,7 @@ class AddDeviceView: UIView {
     
     @objc func onCloseClick(){
         //停止扫描
-        BleManage.shared.stopScan()
+        BleManage.shared.stop()
         hideView()
     }
     
@@ -206,7 +206,7 @@ extension AddDeviceView:UITableViewDelegate,UITableViewDataSource{
         if dataList.count > 0 {
             
             //停止蓝牙扫描
-            BleManage.shared.stopScan()
+            BleManage.shared.stop()
             
             let model = dataList[indexPath.row]
             

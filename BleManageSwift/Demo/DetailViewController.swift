@@ -153,8 +153,8 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
             
             if self.dataList.count > 0 {
                 let model = self.dataList[indexPath.row]
-                BleManage.shared.disconnect(model)
-                
+                BleManage.shared.discon(model)
+                //BleManage.startScan()
                 //如果长度只等于1的时候
                 /*if self.dataList.count == 1 {
                     //断开所有的蓝牙

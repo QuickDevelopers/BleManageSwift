@@ -185,11 +185,11 @@ class DataViewController: UIViewController, UITextFieldDelegate {
         let  unitOn = (switchBtn?.isOn)!
         if unitOn {
             //开启通知
-            BleManage.shared.openNofity(mmodel!, characteristic: (model?.charater)!, open: true)
+            BleManage.shared.nofity(mmodel!, characteristic: (model?.charater)!, open: true)
             
         }else{
             //关闭通知
-            BleManage.shared.openNofity(mmodel!, characteristic: model!.charater!, open: false)
+            BleManage.shared.nofity(mmodel!, characteristic: model!.charater!, open: false)
         }
     }
     
