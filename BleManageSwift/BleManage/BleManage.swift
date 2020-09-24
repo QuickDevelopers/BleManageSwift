@@ -35,6 +35,8 @@ public class BleManage: NSObject{
     //单列模式
     public static let shared = BleManage()
     
+    public static let queue = DispatchQueue(label: "github.blemanage.BleManage", attributes: [])
+    
     override init() {
         super.init()
         centerManager.delegate = self
