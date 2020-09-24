@@ -56,6 +56,8 @@ pod try BleManageSwift
 
 ### 更新日期 2020/9/23
 
+马上进行维护
+
 版本 1.0.5 delete don't need BleExtension 删除不要的额外扩展
 
 版本更改为v1.0.3 v1.0.4
