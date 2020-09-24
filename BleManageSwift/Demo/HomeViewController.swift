@@ -78,7 +78,7 @@ class HomeViewController: UIViewController {
     
     @objc func loadBle() {
         //首先停止扫描
-        BleManage.shared.stopScan()
+        BleManage.shared.stop()
         
         if dataList.count > 0 {
             dataList.removeAll()
@@ -90,7 +90,7 @@ class HomeViewController: UIViewController {
         
         tableView!.reloadData()
         
-        BleManage.shared.startScan()
+        BleManage.shared.scan()
         
     }
     
@@ -170,7 +170,7 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
         if dataList.count > 0 {
             
             //停止蓝牙扫描
-            BleManage.shared.stopScan()
+            BleManage.shared.stop()
             
             let model = dataList[indexPath.row]
             

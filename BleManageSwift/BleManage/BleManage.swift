@@ -6,16 +6,9 @@
 //  Copyright © 2020 RND. All rights reserved.
 //
 
-//
-//  BleManage.swift
-//  BleManageSwift
-//
-//  Created by RND on 2020/9/23.
-//  Copyright © 2020 RND. All rights reserved.
-//
 import UIKit
 import CoreBluetooth
-
+import Combine
 
 public class BleManage: NSObject{
     
@@ -35,51 +28,59 @@ public class BleManage: NSObject{
     //单列模式
     public static let shared = BleManage()
     
+    //队列管理
+    //串行队列
+    let queue = DispatchQueue.init(label: "github.blemanage.BleManage")
+    
     override init() {
         super.init()
-        centerManager.delegate = self
+        //运行蓝牙扫描
+        run()
+    }
+}
+
+extension BleManage{
+    
+    /// 启动蓝牙加入队列
+    public func run(){
+        centerManager = CBCentralManager(delegate: self, queue: queue)
     }
     
-    
-    /// 开始扫描
-    public func startScan(){
+    /// 开始扫描蓝牙
+    public func scan(){
         if centerManager.state.rawValue == CBManagerState.poweredOn.rawValue {
             centerManager.scanForPeripherals(withServices: nil, options: nil)
         }
     }
     
-    /// 停止扫描
-    public func stopScan(){
+    /// 停止扫描蓝牙
+    public func stop(){
         centerManager.stopScan()
     }
     
     
     /// 连接蓝牙
-    /// 通过BleModel去连接
     public func connect(_ model:BleModel){
-        connect(model.peripheral, completionBlock:{
-            success, error in
-            if success {
-                //连接成功
+        if centerManager.state.rawValue == CBManagerState.poweredOn.rawValue {
+            if model.peripheral != nil {
+                
+                centerManager.connect(model.peripheral!, options: nil)
+                
                 model.connect = true
                 self.successList.append(model)
-                
                 BleEventBus.post("connectEvent", sender: self.successList)
-                
-            }else{
-                BleLogger.log("Connect Bletooth Fail!")
-                BleEventBus.post("connectBleFailEvent", sender: "Connect Bletooth Fail!")
             }
-        })
+        }
     }
     
     /// 断开蓝牙
-    public func disconnect(_ model:BleModel){
+    public func discon(_ model:BleModel){
         centerManager.cancelPeripheralConnection(model.peripheral!)
     }
     
-    //断开所有的蓝牙
-    public func disconnectAll(){
+    
+    /// 断开所有的蓝牙
+    public func disall(){
         if successList.count > 0 {
             for model in successList {
                 centerManager.cancelPeripheralConnection(model.peripheral!)
@@ -88,15 +89,15 @@ public class BleManage: NSObject{
         }
     }
     
-    //开启通知
-    public func openNofity(_ model:BleModel?, characteristic: CBCharacteristic?,open:Bool){
+    /// 开启通知
+    public func nofity(_ model:BleModel?, characteristic: CBCharacteristic?,open:Bool){
         c = characteristic
         if let model = model,let c = c{
             model.peripheral!.setNotifyValue(open, for: c)
         }
     }
     
-    //读取蓝牙值
+    /// 读取蓝牙值
     public func read(_ model:BleModel?,characteristic: CBCharacteristic?){
         c = characteristic
         if let model = model,let c = c{
@@ -104,26 +105,6 @@ public class BleManage: NSObject{
         }
     }
     
-    /**
-            public func openNofity(_ model:BleModel,characteristic: CBCharacteristic,open:Bool, completionBlock completionHandler: @escaping (_ success: Data?, _ error: String?) -> Void){
-                //开启通知
-                p = model.peripheral!
-                c = characteristic
-
-                if let c = c{
-                    model.peripheral?.setNotifyValue(open, for: c)
-                }
-                
-                if let d = d{
-                    completionHandler(d, "")
-                }else{
-                    completionHandler(d, e)
-                }
-            }
-     
-     */
-    
-
     
     /// 写入String数据
     public func writeString(_ value: String?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?) {
@@ -155,7 +136,7 @@ public class BleManage: NSObject{
 }
 
 
-extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
+extension BleManage:CBCentralManagerDelegate{
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if #available(iOS 10.0, *) {
@@ -165,7 +146,7 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
             } else if central.state == .poweredOn {
                 BleLogger.log("CoreBluetooth BLE hardware is powered on and ready")
                 BleEventBus.post("bleInfoEvent",sender: "CoreBluetooth BLE hardware is powered on and ready")
-                startScan()
+                scan()
             } else if central.state == .unauthorized {
                 BleLogger.log("CoreBluetooth BLE state is unauthorized")
                 BleEventBus.post("bleInfoEvent",sender: "CoreBluetooth BLE state is unauthorized")
@@ -198,19 +179,6 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
         
         //发送广播数据
         BleEventBus.post("bleEvent",sender: model)
-    }
-    
-    
-    /// 蓝牙连接
-    func connect(_ peripheral: CBPeripheral?, completionBlock completionHandler: @escaping (_ success: Bool, _ error: String?) -> Void) {
-        if centerManager.state.rawValue == CBManagerState.poweredOn.rawValue {
-            if peripheral?.state == .disconnected {
-                completionHandler(true, "Connect Success")
-                if let peripheral = peripheral {
-                    centerManager.connect(peripheral, options: nil)
-                }
-            }
-        }
     }
     
 
@@ -252,8 +220,12 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
         
         BleEventBus.post("connectEvent",sender: successList)
     }
+}
+
+
+extension BleManage:CBPeripheralDelegate{
     
-    
+    /// 发现蓝牙服务
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         if error != nil {
             if let error = error {
@@ -269,7 +241,7 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
     }
     
     
-    /// 发现特征
+    /// 发现蓝牙特征
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if error != nil {
             if let error = error {
@@ -291,7 +263,7 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
                         model.charaters.append(BleUtil.getCharacter(characteristic))
                         //描述读取
                         peripheral.discoverDescriptors(for: characteristic)
-                       
+                        
                     }
                 }
             }
@@ -331,7 +303,7 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
         }
     }
     
-   
+    /// 写入蓝牙 *当为错误的时候返回错误的信息
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         print("didWriteValueForCharacteristic")
         if error != nil {
@@ -344,7 +316,7 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
         }
     }
     
-    
+    /// 特征值更新
     public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         if error != nil {
             if let error = error {
@@ -362,3 +334,58 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
         }
     }
 }
+
+//不重要回调
+
+//    //写入数据回调
+//    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
+//
+//    }
+
+//    //设备名称修改
+//    func peripheralDidUpdateName(_ peripheral: CBPeripheral) {
+//
+//    }
+//
+//    func peripheralIsReady(toSendWriteWithoutResponse peripheral: CBPeripheral) {
+//
+//    }
+//
+//    func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
+//
+//    }
+//
+//    func peripheral(_ peripheral: CBPeripheral, didOpen channel: CBL2CAPChannel?, error: Error?) {
+//
+//    }
+//
+//    //服务名称修改
+//    func peripheral(_ peripheral: CBPeripheral, didModifyServices invalidatedServices: [CBService]) {
+//
+//    }
+//
+//    //描述符写入回调
+//    func peripheral(_ peripheral: CBPeripheral, didWriteValueFor descriptor: CBDescriptor, error: Error?) {
+//
+//    }
+//
+//    //描述符更新
+//    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor descriptor: CBDescriptor, error: Error?) {
+//
+//    }
+//
+//    func peripheral(_ peripheral: CBPeripheral, didDiscoverIncludedServicesFor service: CBService, error: Error?) {
+//
+//    }
+//
+//    //发现描述符
+//    func peripheral(_ peripheral: CBPeripheral, didDiscoverDescriptorsFor characteristic: CBCharacteristic, error: Error?) {
+//
+//    }
+//
+//    //特征值更新
+//    func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
+//
+//    }
+//
+//
