@@ -18,6 +18,8 @@ class DetailViewController: UIViewController {
     private var dataList = [BleModel]()
     
     private var addView:AddDeviceView?
+    
+    //private var isEdit = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +104,6 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
             cell!.accessoryType = .disclosureIndicator
         }
         
-        
         if(dataList.count > 0){
             
             let model = dataList[indexPath.row]
@@ -122,7 +123,6 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
 
             cell?.detailTextLabel?.text = s
             
-            
         }
         
         return cell!;
@@ -133,11 +133,6 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
         
         if dataList.count > 0 {
             
-         
-            
-           
-            
-           
             
         }
     }
@@ -146,6 +141,46 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    
+    // TableView编辑的时候
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+ 
+        let delete = UITableViewRowAction(style: .destructive, title: "Disconnect", handler: { action, indexPath in
+            
+            if self.dataList.count > 0 {
+                let model = self.dataList[indexPath.row]
+                BleManage.shared.disconnect(model)
+                
+                //如果长度只等于1的时候
+                //if self.dataList.count == 1 {
+                    //断开所有的蓝牙
+                    //BleManage.shared.disconnectAll()
+                    //并界面销毁
+                    //self.navigationController?.popViewController(animated: true)
+                //}
+            }
+            //删除之后立即刷新界面
+            self.tableView?.reloadData()
+        })
+        return [delete]
+    }
+    
+    // 当TableView编辑取消的时候执行
+    /*func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        isEdit = false
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        isEdit  = true
+    }
+
+  
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        isEdit  = false
+    }*/
+    
+    
 }
 
 

@@ -75,8 +75,36 @@ public class BleManage: NSObject{
         }
     }
     
+    
+    /// 写入String数据
+    public func writeString(_ value: String?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?) {
+        let data = value?.data(using: .utf8)
+        if (characteristic?.properties.rawValue)! & CBCharacteristicProperties.writeWithoutResponse.rawValue != 0 {
+            if let data = data, let characteristic = characteristic {
+                periperal?.writeValue(data, for: characteristic, type: .withoutResponse)
+            }
+        } else {
+            if let data = data, let characteristic = characteristic {
+                periperal?.writeValue(data, for: characteristic, type: .withResponse)
+            }
+        }
+    }
+    
+    
+    /// 写入Data数据
+    public func writeData(_ value: Data?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?) {
+        //let data = value
+        if (characteristic?.properties.rawValue)! & CBCharacteristicProperties.writeWithoutResponse.rawValue != 0 {
+            if let value = value, let characteristic = characteristic {
+                periperal?.writeValue(value, for: characteristic, type: .withoutResponse)
+            }
+        } else {
+            if let value = value, let characteristic = characteristic {
+                periperal?.writeValue(value, for: characteristic, type: .withResponse)
+            }
+        }
+    }
 }
-
 
 
 extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
@@ -123,7 +151,6 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
         BleEventBus.post("bleEvent",sender: model)
     }
     
-    
     /// 蓝牙连接
     func connect(_ peripheral: CBPeripheral?, completionBlock completionHandler: @escaping (_ success: Bool, _ error: String?) -> Void) {
         if centerManager.state.rawValue == CBManagerState.poweredOn.rawValue {
@@ -148,6 +175,7 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
     
     /// 失败
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        
         if successList.count > 0{
             for model in successList {
                 if model.peripheral == peripheral {
@@ -155,6 +183,7 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
                 }
             }
         }
+        
         BleEventBus.post("connectEvent",sender: successList)
     }
     
@@ -224,33 +253,6 @@ extension BleManage:CBCentralManagerDelegate,CBPeripheralDelegate{
         BleEventBus.post("connectEvent",sender: successList)
     }
     
-    /// 写入String数据
-    func writeString(_ value: String?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?) {
-        let data = value?.data(using: .utf8)
-        if (characteristic?.properties.rawValue)! & CBCharacteristicProperties.writeWithoutResponse.rawValue != 0 {
-            if let data = data, let characteristic = characteristic {
-                periperal?.writeValue(data, for: characteristic, type: .withoutResponse)
-            }
-        } else {
-            if let data = data, let characteristic = characteristic {
-                periperal?.writeValue(data, for: characteristic, type: .withResponse)
-            }
-        }
-    }
-    
-    /// 写入Data数据
-    func writeData(_ value: Data?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?) {
-        let data = value
-        if (characteristic?.properties.rawValue)! & CBCharacteristicProperties.writeWithoutResponse.rawValue != 0 {
-            if let data = data, let characteristic = characteristic {
-                periperal?.writeValue(data, for: characteristic, type: .withoutResponse)
-            }
-        } else {
-            if let data = data, let characteristic = characteristic {
-                periperal?.writeValue(data, for: characteristic, type: .withResponse)
-            }
-        }
-    }
     
     
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {

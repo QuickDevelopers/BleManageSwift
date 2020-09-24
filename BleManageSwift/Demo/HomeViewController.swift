@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     
     //显示设备的蓝牙列表
     var devicesList = [BleModel]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -189,7 +189,7 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
         return 80
     }
     
-    
+ 
 }
 
 
