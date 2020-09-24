@@ -191,7 +191,13 @@ override func viewWillDisappear(_ animated: Bool) {
 
 发送设备连接成功的事件
 
+v1.0.5支持
+
 BleEventBus.post("connectEvent", sender: self.successList)
+
+v1.0.6 及以上的版本不在支持改为
+
+BleEventBus.post("connectEvent", sender: model)
 
 发送扫描设备的事件
 
