@@ -69,3 +69,21 @@ extension UIColor {
         }
     }
 }
+
+extension Data{
+    
+    func hexString()->String{
+        return map{String(format:"-%02x",$0)}.joined().uppercased()
+    }
+    
+    //Data转16进制字符串
+    func toHexArray()->[String]{
+        return map{String(format: "%2x", $0)}
+    }
+    
+    func toIntArray()->[Int]{
+        return map{Int($0)}
+    }
+
+}
+

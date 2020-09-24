@@ -5,7 +5,6 @@
 //  Created by RND on 2020/9/23.
 //  Copyright © 2020 RND. All rights reserved.
 //
-
 import UIKit
 import CoreBluetooth
 
@@ -35,7 +34,6 @@ class DetailViewController: UIViewController {
         item.tintColor = UIColor.white
         navigationItem.rightBarButtonItem = item
         
-        
         initView()
         initData()
     }
@@ -45,7 +43,6 @@ class DetailViewController: UIViewController {
        addView = AddDeviceView(title: "Add Connect Bluetooth", name: "")
     }
     
-
     func initView(){
         tableView = UITableView.init(frame: self.view.frame, style: .plain)
         tableView!.delegate = self;
@@ -55,14 +52,6 @@ class DetailViewController: UIViewController {
     
     
     func initData(){
-        
-        //连接成功
-        BleEventBus.onMainThread(self, name: "connectEvent"){
-            result in
-            self.dataList = result?.object as! [BleModel]
-            self.tableView?.reloadData()
-        }
-        
         //断开蓝牙
         BleEventBus.onMainThread(self, name: "disconnectEvent"){
             result in
@@ -72,12 +61,20 @@ class DetailViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //连接成功
+        BleEventBus.onMainThread(self, name: "connectEvent"){
+            result in
+            self.dataList = result?.object as! [BleModel]
+            self.tableView?.reloadData()
+        }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        BleEventBus.unregister(self)
+        BleEventBus.unregister(self, name: "connectEvent")
     }
-
 }
 
 
@@ -109,18 +106,22 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
             
             cell?.textLabel?.text = model.name
             
-            var s:String = ""
-             
-            if model.charaters.count > 0 {
-                for m in model.charaters {
-                    
-                    print("characteristic is \(m.uuid)")
-                    
-                    s += String(format:"UUID is %@", m.uuid)+","
-                }
-            }
+//            var s:String = ""
+//
+//            if model.charaters.count > 0 {
+//                for m in model.charaters {
+//
+//                    print("characteristic is \(m.uuid)")
+//
+//                    s += String(format:"UUID is %@", m.uuid)+","
+//                }
+//            }
 
-            cell?.detailTextLabel?.text = s
+            if model.connect{
+                cell?.detailTextLabel?.text = "connect"
+            }else{
+                cell?.detailTextLabel?.text = ""
+            }
             
             
         }
@@ -133,7 +134,10 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
         
         if dataList.count > 0 {
             
-            
+            let model = dataList[indexPath.row]
+            let op = OperationViewController()
+            op.mmodel = model
+            self.navigationController?.pushViewController(op, animated:true)
         }
     }
     
@@ -168,5 +172,3 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
     
     
 }
-
-

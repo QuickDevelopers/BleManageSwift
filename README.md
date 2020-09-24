@@ -195,7 +195,7 @@ v1.0.5支持
 
 BleEventBus.post("connectEvent", sender: self.successList)
 
-v1.0.6 及以上的版本不在支持改为
+v1.0.6 及以上的版本不再支持 改为
 
 BleEventBus.post("connectEvent", sender: model)
 

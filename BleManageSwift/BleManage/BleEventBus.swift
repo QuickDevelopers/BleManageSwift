@@ -12,7 +12,7 @@ public class BleEventBus {
     
     struct Static {
         static let instance = BleEventBus()
-        static let queue = DispatchQueue(label: "github.blemanager.BleEventBus", attributes: [])
+        static let queue = DispatchQueue(label: "github.blemanage.BleEventBus", attributes: [])
     }
     
     struct NamedObserver {
