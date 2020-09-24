@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC362ABC251C2337000536A5 /* ComExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC362ABB251C2337000536A5 /* ComExtension.swift */; };
 		BCDEA0E1251AFA5700DEEE66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0E0251AFA5700DEEE66 /* AppDelegate.swift */; };
 		BCDEA0E3251AFA5700DEEE66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0E2251AFA5700DEEE66 /* SceneDelegate.swift */; };
 		BCDEA0E5251AFA5700DEEE66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDEA0E4251AFA5700DEEE66 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC362ABB251C2337000536A5 /* ComExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComExtension.swift; sourceTree = "<group>"; };
 		BCDEA0DD251AFA5700DEEE66 /* BleManageSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BleManageSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCDEA0E0251AFA5700DEEE66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCDEA0E2251AFA5700DEEE66 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				BCDEA0F7251AFAED00DEEE66 /* View */,
 				BCDEA104251AFC1900DEEE66 /* HomeViewController.swift */,
 				BCDEA106251AFC3000DEEE66 /* DetailViewController.swift */,
+				BC362ABB251C2337000536A5 /* ComExtension.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				BCDEA105251AFC1900DEEE66 /* HomeViewController.swift in Sources */,
 				BCDEA0E3251AFA5700DEEE66 /* SceneDelegate.swift in Sources */,
 				BCDEA0FB251AFB7E00DEEE66 /* BleManage.swift in Sources */,
+				BC362ABC251C2337000536A5 /* ComExtension.swift in Sources */,
 				BCDEA0FD251AFB9600DEEE66 /* BleModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
