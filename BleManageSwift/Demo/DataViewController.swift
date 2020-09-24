@@ -123,19 +123,19 @@ class DataViewController: UIViewController, UITextFieldDelegate {
             //st += "\(n)"
             //print(st)
             
-            //let bytes: [UInt8] = [0x21, 0x55]
-            //let byteData: Data = Data.init(bytes)
+            let bytes: [UInt8] = [0x21,0x55,0x22]
+            let byteData: Data = Data.init(bytes)
             
             //let ch:Character = Character(UnicodeScalar(n!)!)
             //print(ch)
             
             //let xq = String(format:"%@", ch as! CVarArg)
             
-            let s = convertToHex(fromASCII: inpt)
+            //let s = convertToHex(fromASCII: inpt)
             
-            //BleManage.shared.writeData(byteData, for: (model?.charater)!, periperalData: mmodel?.peripheral)
+            BleManage.shared.writeData(byteData, for: (model?.charater)!, periperalData: mmodel?.peripheral)
             
-            BleManage.shared.writeString(s, for: (model?.charater)!, periperalData: mmodel?.peripheral)
+            //BleManage.shared.writeString(s, for: (model?.charater)!, periperalData: mmodel?.peripheral)
         }
     }
     
