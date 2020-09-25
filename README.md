@@ -1,7 +1,15 @@
-# BleManageSwift
+# BleManageSwift 
+<br>
+<a href="https://raw.githubusercontent.com/devicekit/DeviceKit/master/LICENSE" rel="nofollow"><img src="https://camo.githubusercontent.com/c0e54a826d90da52e4ee70c63fef3ee61b3ffbd5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d6c69676874677265792e737667" alt="GitHub license" data-canonical-src="https://img.shields.io/badge/license-MIT-lightgrey.svg" style="max-width:100%;"></a>
+
+<a href="https://cocoapods.org/pods/BleManageSwift" rel="nofollow"><img src="https://camo.githubusercontent.com/b533065ec1d927d530e9fe0bbc6cc1ba71c30548/68747470733a2f2f696d672e736869656c64732e696f2f636f636f61706f64732f762f4465766963654b69742e737667" alt="CocoaPods Compatible" data-canonical-src="https://img.shields.io/cocoapods/v/DeviceKit.svg" style="max-width:100%;"></a>
+
+<a href="http://cocoadocs.org/docsets/DeviceKit" rel="nofollow"><img src="https://camo.githubusercontent.com/461458060c0e9204b9393ba8e8a7657b93198a50/68747470733a2f2f696d672e736869656c64732e696f2f636f636f61706f64732f702f4465766963654b69742e7376673f7374796c653d666c6174" alt="Platform" data-canonical-src="https://img.shields.io/cocoapods/p/DeviceKit.svg?style=flat" style="max-width:100%;"></a>
+
+<br>
  This is BleManageSwift
 
-### new version 1.0.5
+### new version 1.0.6
 *目前不支持oc版本
 
  非常感谢 cesarferreira https://github.com/cesarferreira/SwiftEventBus/commits?author=cesarferreira 提供的 SwiftEventBus
@@ -54,7 +62,98 @@ Alternatively to give it a test run, run the command:
 
 pod try BleManageSwift
 
-### 更新日期 2020/9/23
+### 更新 2020/9/25
+
+version 1.0.6
+
+update BleManange class
+
+1.0.6 version 
+
+update Bluetooth operation method
+
+1. Bluetooth scan
+
+```java
+
+    BleManage.shared.scan()
+
+```
+2. stop BleManage scan
+
+```java
+
+    BleManage.shared.stop()
+
+```
+
+3. Connect Bluetooth
+
+```java
+
+//use mdoel is BleModel
+BleManage.shared.connect(model)
+
+```
+
+4. Disconnect Bluetooth
+
+```java
+
+//use mdoel is BleModel
+BleManage.shared.discon(model)
+
+```
+
+5. Disconnect All Bluetooth
+
+```java
+
+//use mdoel is BleModel
+BleManage.shared.disall(model)
+
+```
+
+6. open Bluetooth nofity
+
+```java
+
+//use mdoel is BleModel
+//current CBCharacteristic
+//open -> true,false
+BleManage.shared.nofity(_ model:BleModel?, characteristic: CBCharacteristic?,open:Bool)
+
+```
+
+7. read Bluetooth value
+
+```java
+//use mdoel is BleModel
+//current CBCharacteristic
+BleManage.shared.read(_ model:BleModel?,characteristic: CBCharacteristic?)
+
+```
+
+8. write Bluetooth value
+
+```java 
+
+//write String type value
+//current CBCharacteristic
+//current CBPeripheral
+
+BleManage.shared.writes(_ value: String?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?)
+
+//write Data type value
+//current CBCharacteristic
+//current CBPeripheral
+
+BleManage.shared.writes(_ value: Data?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?)
+
+```
+
+
+### 更新 2020/9/23
 
 马上进行维护
 
@@ -194,10 +293,6 @@ override func viewWillDisappear(_ animated: Bool) {
 v1.0.5支持
 
 BleEventBus.post("connectEvent", sender: self.successList)
-
-v1.0.6 及以上的版本不再支持 改为
-
-BleEventBus.post("connectEvent", sender: model)
 
 发送扫描设备的事件
 
