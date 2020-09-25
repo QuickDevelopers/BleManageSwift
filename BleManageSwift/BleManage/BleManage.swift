@@ -10,6 +10,7 @@ import UIKit
 import CoreBluetooth
 import Combine
 
+
 public class BleManage: NSObject{
     
     private var centerManager = CBCentralManager()
@@ -31,6 +32,9 @@ public class BleManage: NSObject{
     //队列管理
     //串行队列
     let queue = DispatchQueue.init(label: "github.blemanage.BleManage")
+    
+    //定时器
+    //var timer: Timer?
     
     override init() {
         super.init()
@@ -107,7 +111,7 @@ extension BleManage{
     
     
     /// 写入String数据
-    public func writeString(_ value: String?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?) {
+    public func writes(_ value: String?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?) {
         let data = value?.data(using: .utf8)
         if (characteristic?.properties.rawValue)! & CBCharacteristicProperties.writeWithoutResponse.rawValue != 0 {
             if let data = data, let characteristic = characteristic {
@@ -121,7 +125,7 @@ extension BleManage{
     }
     
     /// 写入Data数据
-    public func writeData(_ value: Data?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?) {
+    public func writed(_ value: Data?, for characteristic: CBCharacteristic?, periperalData periperal: CBPeripheral?) {
         let data = value
         if (characteristic?.properties.rawValue)! & CBCharacteristicProperties.writeWithoutResponse.rawValue != 0 {
             if let data = data, let characteristic = characteristic {

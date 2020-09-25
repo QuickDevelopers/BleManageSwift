@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
     
     /// 接收数据
     private func initData(){
-       
+
         //接收列表
         BleEventBus.onMainThread(self, name: "bleEvent"){
             result in
@@ -107,7 +107,6 @@ class HomeViewController: UIViewController {
             dataList.append(model)
             
             tableView!.insertRows(at: indexPaths, with: .automatic)
-        
         }
         /*
         此段代码非常卡顿 最好不要去加
@@ -146,8 +145,12 @@ extension HomeViewController: UITableViewDelegate,UITableViewDataSource{
             cell!.accessoryType = .disclosureIndicator
         }
         
-        //cell!.selectionStyle = UITableviewcell
+        /**
+            在这个地方自定义 cell可以实现 状态 当没有接收到数据的时候显示loading
+            有数据的时候把loading去掉
+         */
         
+
         if(dataList.count > 0){
             
             let model = dataList[indexPath.row]

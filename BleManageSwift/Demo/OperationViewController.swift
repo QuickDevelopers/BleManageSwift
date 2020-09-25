@@ -37,6 +37,9 @@ class OperationViewController: UIViewController {
         
     }
     
+   
+    
+    
     func initView(){
         tableView = UITableView.init(frame: self.view.frame, style: .plain)
         tableView!.delegate = self;
@@ -47,9 +50,42 @@ class OperationViewController: UIViewController {
     
     func initData(){
         dataList = mmodel!.charaters
+        
+        
+        //断开蓝牙
+        BleEventBus.onMainThread(self, name: "disconnectEvent"){
+            result in
+            let modelx = result?.object as! BleModel
+            //类型相当 用 === 去判断
+            if modelx === self.mmodel {
+                if modelx.peripheral != nil {
+                    if modelx.name != nil {
+                        //断开返回界面
+                        BleLogger.log("Device \(modelx.name!) disconnect!")
+                    }
+                }
+                //断开界面
+                self.navigationController?.popViewController(animated: true)
+            }else{
+                if modelx.name != nil {
+                    BleLogger.log("Device \(modelx.name!) disconnect!")
+                }
+            }
+        }
     }
     
+    
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        BleEventBus.unregister(self, name: "connectEvent")
+    }
+    
+    
 }
+
 
 extension OperationViewController: UITableViewDelegate,UITableViewDataSource{
     
@@ -81,8 +117,8 @@ extension OperationViewController: UITableViewDelegate,UITableViewDataSource{
         }
         
         return cell!
-        
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -96,14 +132,10 @@ extension OperationViewController: UITableViewDelegate,UITableViewDataSource{
     }
     
     
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-    
-    
-    
-    
+
 }
 
 

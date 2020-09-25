@@ -64,7 +64,7 @@ class DataViewController: UIViewController, UITextFieldDelegate {
         
         vreadLb = UILabel.init(frame: CGRect(x: 20, y: 170, width: WIDTH-20, height: 30))
         vreadLb?.textColor = UIColor.black
-        vreadLb?.text = "Read or Notidfy"
+        vreadLb?.text = "Read or Notify"
         vreadLb?.font = UIFont(name: "Helvetica-Bold", size: 20)
         vreadLb?.textAlignment = .left
         self.view.addSubview(vreadLb!)
@@ -133,9 +133,9 @@ class DataViewController: UIViewController, UITextFieldDelegate {
             
             //let s = convertToHex(fromASCII: inpt)
             
-            BleManage.shared.writeData(byteData, for: (model?.charater)!, periperalData: mmodel?.peripheral)
+            BleManage.shared.writed(byteData, for: (model?.charater)!, periperalData: mmodel?.peripheral)
             
-            //BleManage.shared.writeString(s, for: (model?.charater)!, periperalData: mmodel?.peripheral)
+            //BleManage.shared.writes(s, for: (model?.charater)!, periperalData: mmodel?.peripheral)
         }
     }
     
@@ -177,6 +177,28 @@ class DataViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+        
+        //断开蓝牙
+        BleEventBus.onMainThread(self, name: "disconnectEvent"){
+            result in
+            let modelx = result?.object as! BleModel
+            //类型相当 用 === 去判断
+            if modelx === self.mmodel {
+                if modelx.peripheral != nil {
+                    if modelx.name != nil {
+                        //断开返回界面
+                        BleLogger.log("Device \(modelx.name!) disconnect!")
+                    }
+                }
+                //断开界面
+                self.navigationController?.popViewController(animated: true)
+            }else{
+                if modelx.name != nil {
+                    BleLogger.log("Device \(modelx.name!) disconnect!")
+                }
+            }
+        }
+        
     }
     
     
@@ -247,10 +269,6 @@ class DataViewController: UIViewController, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         BleEventBus.unregister(self, name: "connectEvent")
     }
-    
-    
-    
-    
-    
+
 
 }

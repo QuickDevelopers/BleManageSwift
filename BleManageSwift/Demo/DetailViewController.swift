@@ -10,6 +10,8 @@ import CoreBluetooth
 
 class DetailViewController: UIViewController {
     
+    var loadView:LoadingView?
+    
     let CELLIDENTIFITER = "CELLIDENTIFITER"
     
     private var tableView:UITableView?
@@ -33,9 +35,27 @@ class DetailViewController: UIViewController {
         let item = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(onAddBleClick))
         item.tintColor = UIColor.white
         navigationItem.rightBarButtonItem = item
+        customNavigationLeftItem()
         
         initView()
         initData()
+    }
+    
+    
+    func customNavigationLeftItem(){
+        let item1 = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = item1
+        
+        let item = UIBarButtonItem(image:UIImage(named: "back"), style: .plain, target: self, action: #selector(onBackClick))
+        self.navigationItem.leftBarButtonItem = item
+    }
+    
+    //返回事件
+    @objc func onBackClick(){
+        print("断开蓝牙的所有操作")
+        //断开所有的蓝牙
+        BleManage.shared.disall()
+        self.navigationController?.popViewController(animated: true)
     }
     
     //点击进入新建界面
@@ -47,11 +67,15 @@ class DetailViewController: UIViewController {
         tableView = UITableView.init(frame: self.view.frame, style: .plain)
         tableView!.delegate = self;
         tableView!.dataSource = self;
+        tableView!.separatorStyle = .none
         self.view.addSubview(tableView!)
     }
     
     
     func initData(){
+        
+        //loadView = LoadingView(title: "Connect...")
+        
         //断开蓝牙
         BleEventBus.onMainThread(self, name: "disconnectEvent"){
             result in
@@ -61,11 +85,13 @@ class DetailViewController: UIViewController {
         }
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //连接成功
         BleEventBus.onMainThread(self, name: "connectEvent"){
             result in
+            //self.loadView?.hideView()
             self.dataList = result?.object as! [BleModel]
             self.tableView?.reloadData()
         }
@@ -93,10 +119,10 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: CELLIDENTIFITER)
+       var cell: DetailViewCell? = tableView.dequeueReusableCell(withIdentifier: CELLIDENTIFITER) as? DetailViewCell
         if cell == nil{
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: CELLIDENTIFITER)
-            cell!.accessoryType = .disclosureIndicator
+            cell = DetailViewCell(style: .default, reuseIdentifier: CELLIDENTIFITER)
+            cell!.selectionStyle = .none
         }
         
         
@@ -104,26 +130,17 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
             
             let model = dataList[indexPath.row]
             
-            cell?.textLabel?.text = model.name
-            
-//            var s:String = ""
-//
-//            if model.charaters.count > 0 {
-//                for m in model.charaters {
-//
-//                    print("characteristic is \(m.uuid)")
-//
-//                    s += String(format:"UUID is %@", m.uuid)+","
-//                }
-//            }
-
-            if model.connect{
-                cell?.detailTextLabel?.text = "connect"
-            }else{
-                cell?.detailTextLabel?.text = ""
+            if model.charaters.count > 0 {
+                cell?.mLoadVw?.isHidden = true
+                cell?.mDisplayVw?.isHidden = false
+                cell?.mNameLb?.text = model.name
+                
+                if model.connect {
+                    cell?.mConnectLb?.text = "connect"
+                }else{
+                    cell?.mConnectLb?.text = "disconnect"
+                }
             }
-            
-            
         }
         
         return cell!;
@@ -143,7 +160,7 @@ extension DetailViewController: UITableViewDelegate,UITableViewDataSource{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 110
     }
     
     // TableView编辑的时候
