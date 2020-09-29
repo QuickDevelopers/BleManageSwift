@@ -217,14 +217,13 @@ class DataViewController: UIViewController, UITextFieldDelegate {
     
     //更新按钮显示
     func updateView(amodel:BleModel){
-
-        let q = amodel.data
-        if let q = q {
-            if q.charater == model!.charater {
-                readLb?.text = q.data?.hexString()
+        if amodel.datas.count > 0 {
+            for d in amodel.datas {
+                if d.charater == model!.charater {
+                    readLb?.text = d.data?.hexString()
+                }
             }
         }
-        
         
     }
     

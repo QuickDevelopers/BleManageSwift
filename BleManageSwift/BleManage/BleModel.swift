@@ -11,25 +11,25 @@ import CoreBluetooth
 
 public class BleModel: NSObject {
     //名字
-   public var name:String?
+    public var name:String?
     //mac
-   public var mac:String?
+    public var mac:String?
     //rssi信号值
-   public var rssi:NSNumber?
+    public var rssi:NSNumber?
     //
-   public var peripheral:CBPeripheral?
+    public var peripheral:CBPeripheral?
     //特征
-   public var charaters = [BleCharacter]()
+    public var charaters = [BleCharacter]()
     //服务
-   public var service:CBService?
+    public var service:CBService?
     //是否连接
-   public var connect = false
+    public var connect = false
     //接收广播数据
-   public var advertisementData: [String : Any]?
+    public var advertisementData: [String : Any]?
     //日期
-   public var date:Date?
+    public var date:Date?
     //解析的data数据是一个数组类型的
-    public var data:BleData?
+    public var datas = [BleData]()
 }
 
 

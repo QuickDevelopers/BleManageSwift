@@ -58,6 +58,14 @@ Alternatively to give it a test run, run the command:
 
 pod try BleManageSwift
 
+### Update 2020/9/29
+
+version 1.0.7
+
+1. Fixed unable to read data by multiple devices。
+2. Data reading was received by list
+
+
 ### 更新 2020/9/25
 
 version 1.0.6

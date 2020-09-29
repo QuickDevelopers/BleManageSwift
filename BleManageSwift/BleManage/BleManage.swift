@@ -19,7 +19,7 @@ public class BleManage: NSObject{
     
     var p:CBPeripheral?
     
-    var c:CBCharacteristic?
+    //var c:CBCharacteristic?
     
     var d:Data?
     //错误信息
@@ -94,17 +94,17 @@ extension BleManage{
     
     /// 开启通知
     public func nofity(_ model:BleModel?, characteristic: CBCharacteristic?,open:Bool){
-        c = characteristic
-        if let model = model,let c = c{
-            model.peripheral!.setNotifyValue(open, for: c)
+        //c = characteristic
+        if let model = model,let characteristic = characteristic{
+            model.peripheral!.setNotifyValue(open, for: characteristic)
         }
     }
     
     /// 读取蓝牙值
     public func read(_ model:BleModel?,characteristic: CBCharacteristic?){
-        c = characteristic
-        if let model = model,let c = c{
-            model.peripheral!.readValue(for: c)
+        //c = characteristic
+        if let model = model,let characteristic = characteristic{
+            model.peripheral!.readValue(for: characteristic)
         }
     }
     
@@ -265,7 +265,7 @@ extension BleManage:CBPeripheralDelegate{
                         
                         model.charaters.append(BleUtil.getCharacter(characteristic))
                         //描述读取
-                        peripheral.discoverDescriptors(for: characteristic)
+                        //peripheral.discoverDescriptors(for: characteristic)
                         
                     }
                 }
@@ -292,11 +292,13 @@ extension BleManage:CBPeripheralDelegate{
             for model in successList {
                 if model.peripheral == peripheral {
                     //当前的需要等于系统的防止数据错乱
-                    if c == characteristic {
-                        let m = BleData()
-                        m.charater = c
-                        m.data = characteristic.value
-                        model.data = m
+                    for md in model.charaters{
+                        if md.charater == characteristic{
+                            let m = BleData()
+                            m.charater = md.charater
+                            m.data = characteristic.value
+                            model.datas.append(m)
+                        }
                     }
                 }
             }
@@ -321,20 +323,20 @@ extension BleManage:CBPeripheralDelegate{
     
     /// 特征值更新
     public func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
-        if error != nil {
-            if let error = error {
-                e = "read characteristic \(error)"
-                BleLogger.log("read characteristic \(error)")
-                BleEventBus.post("readValueError",sender: "read characteristic \(error)")
-            }
-            return
-        }
-        print("\(characteristic.isNotifying)")
-        
-        if(characteristic.isNotifying){
-            peripheral.readValue(for: characteristic);
-            print(characteristic.uuid.uuidString);
-        }
+//        if error != nil {
+//            if let error = error {
+//                e = "read characteristic \(error)"
+//                BleLogger.log("read characteristic \(error)")
+//                BleEventBus.post("readValueError",sender: "read characteristic \(error)")
+//            }
+//            return
+//        }
+//        print("\(characteristic.isNotifying)")
+//
+//        if(characteristic.isNotifying){
+//            peripheral.readValue(for: characteristic);
+//            print(characteristic.uuid.uuidString);
+//        }
     }
 }
 

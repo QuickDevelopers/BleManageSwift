@@ -74,16 +74,11 @@ class OperationViewController: UIViewController {
         }
     }
     
-    
-    
-    
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         BleEventBus.unregister(self, name: "connectEvent")
     }
-    
-    
+
 }
 
 
