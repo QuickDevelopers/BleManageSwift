@@ -5,7 +5,7 @@
 <br>
  This is BleManageSwift
 
-### new version 1.0.6
+### new version 1.0.7
 *目前不支持oc版本
 
  非常感谢 cesarferreira https://github.com/cesarferreira/SwiftEventBus/commits?author=cesarferreira 提供的 SwiftEventBus
