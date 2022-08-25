@@ -31,7 +31,7 @@ Pod::Spec.new do |spec|
 
   spec.source_files  = "BleManageSwift", "BleManageSwift/BleManage/*.{swift}"
 
-  spec.frameworks = "Foundation","UIKit","CoreBluetooth"
+  spec.frameworks = "Foundation","UIKit","CoreBluetooth",""
 
  
 

@@ -28,6 +28,8 @@ class DataViewController: UIViewController, UITextFieldDelegate {
     var notifySch:UISwitch?
     var writeTf:UITextField?
     var writeBtn:UIButton?
+    var writebTf:UITextField?
+    var writebBtn:UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,17 +50,17 @@ class DataViewController: UIViewController, UITextFieldDelegate {
     
     func initView(){
         
-        nameLb = UILabel.init(frame: CGRect(x: 20, y: 80, width: 200, height: 30))
+        nameLb = UILabel.init(frame: CGRect(x: 20, y: 80, width: WIDTH-20, height: 30))
         nameLb?.textColor = UIColor.black
         //nameLb?.text = "-"
         nameLb?.font = UIFont(name: "Helvetica-Bold", size: 20)
         nameLb?.textAlignment = .left
         self.view.addSubview(nameLb!)
         
-        chartLb = UILabel.init(frame: CGRect(x: 20, y: 120, width: 200, height: 30))
+        chartLb = UILabel.init(frame: CGRect(x: 20, y: 120, width: WIDTH-20, height: 30))
         chartLb?.textColor = UIColor.black
         //chartLb?.text = "-"
-        chartLb?.font = UIFont(name: "Helvetica-Bold", size: 20)
+        chartLb?.font = UIFont(name: "Helvetica", size: 16)
         chartLb?.textAlignment = .left
         self.view.addSubview(chartLb!)
         
@@ -71,14 +73,18 @@ class DataViewController: UIViewController, UITextFieldDelegate {
         
         
         //读取
-        readLb = UILabel.init(frame: CGRect(x: 20, y: 200, width: 200, height: 30))
+        readLb = UILabel.init(frame: CGRect(x: 20, y: 200, width: WIDTH-20, height: 60))
         readLb?.textColor = UIColor.black
-        readLb?.font = UIFont(name: "Helvetica", size: 18)
+        readLb?.font = UIFont(name: "Helvetica", size: 16)
+        
+        readLb?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        readLb?.numberOfLines = 0
+        
         readLb?.textAlignment = .left
         self.view.addSubview(readLb!)
         
         
-        tipsLb = UILabel.init(frame: CGRect(x: 20, y: 240, width: 100, height: 30))
+        tipsLb = UILabel.init(frame: CGRect(x: 20, y: 270, width: WIDTH-20, height: 30))
         tipsLb?.textColor = UIColor.black
         tipsLb?.text = "Open Notify"
         tipsLb?.font = UIFont(name: "Helvetica-Bold", size: 16)
@@ -86,7 +92,7 @@ class DataViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(tipsLb!)
         
         //通知
-        notifySch = UISwitch.init(frame: CGRect(x: 120, y: 240, width: 50, height: 30))
+        notifySch = UISwitch.init(frame: CGRect(x: 120, y: 290, width: 50, height: 30))
         self.view.addSubview(notifySch!)
         
         notifySch!.addTarget(self, action: #selector(onAction(_:)), for: .valueChanged)
@@ -97,53 +103,69 @@ class DataViewController: UIViewController, UITextFieldDelegate {
         
         
         //发送蓝牙数据
-        writeTf = UITextField.init(frame: CGRect(x: 20, y: 300, width: 120, height: 55))
+        writeTf = UITextField.init(frame: CGRect(x: 20, y: 350, width: 120, height: 55))
         writeTf!.textColor = UIColor.gray
         writeTf!.font = UIFont(name: "Helvetica", size: 18)
-        writeTf!.placeholder = "Please input "
+        writeTf!.placeholder = "Please input string"
         writeTf?.keyboardType = .webSearch
         self.view.addSubview(writeTf!)
         
-        writeBtn = UIButton.init(frame: CGRect(x: 180, y: 300, width: 120, height: 55))
-        writeBtn?.backgroundColor = UIColor(hexString: "#999999", transparency: 1.0)
+        writeBtn = UIButton.init(frame: CGRect(x: 180, y: 350, width: 120, height: 55))
+        writeBtn?.backgroundColor = UIColor(hexString: "#555555", transparency: 1.0)
         writeBtn?.layer.cornerRadius = 15
-        writeBtn?.setTitle("Send", for: .normal)
+        writeBtn?.setTitle("Send String", for: .normal)
         self.view.addSubview(writeBtn!)
         
         writeBtn!.addTarget(self, action: #selector(sureOnClick(sender:)), for: .touchUpInside)
         
+        //发送蓝牙数据
+        writebTf = UITextField.init(frame: CGRect(x: 20, y: 430, width: 120, height: 55))
+        writebTf!.textColor = UIColor.gray
+        writebTf!.font = UIFont(name: "Helvetica", size: 18)
+        writebTf!.placeholder = "Please input string"
+        writebTf?.keyboardType = .webSearch
+        self.view.addSubview(writebTf!)
+        
+        writebBtn = UIButton.init(frame: CGRect(x: 180, y: 430, width: 120, height: 55))
+        writebBtn?.backgroundColor = UIColor(hexString: "#555555", transparency: 1.0)
+        writebBtn?.layer.cornerRadius = 15
+        writebBtn?.setTitle("Send Byte", for: .normal)
+        self.view.addSubview(writebBtn!)
+        
+        writebBtn!.addTarget(self, action: #selector(sureOnbClick(sender:)), for: .touchUpInside)
     }
     
-    //按钮发送数据
+    //按钮发送String数据
     @objc func sureOnClick(sender:UIButton){
         let inpt = writeTf?.text
         if inpt != nil && inpt != "" {
-            //let n = Int(inpt!)
-            //let st = String(format:"%@", n!)
-            //st += "\(n)"
-            //print(st)
-            
-            let bytes: [UInt8] = [0x21,0x55,0x22]
-            let byteData: Data = Data.init(bytes)
-            
-            //let ch:Character = Character(UnicodeScalar(n!)!)
-            //print(ch)
-            
-            //let xq = String(format:"%@", ch as! CVarArg)
-            
-            //let s = convertToHex(fromASCII: inpt)
-            
-            BleManage.shared.writed(byteData, for: (model?.charater)!, periperalData: mmodel?.peripheral)
-            
-            //BleManage.shared.writes(s, for: (model?.charater)!, periperalData: mmodel?.peripheral)
+          
+            BleManage.shared.writes(inpt, for: (model?.charater)!, periperalData: mmodel?.peripheral)
         }
     }
     
+    //发送data数据
+    @objc func sureOnbClick(sender:UIButton){
+        let inpt = writebTf?.text
+        if inpt != nil && inpt != "" {
+            
+            let bytes = stringToBytes(str: inpt!)
+            
+            let byteData: Data = Data.init(bytes)
+            
+            BleManage.shared.writed(byteData, for: (model?.charater)!, periperalData: mmodel?.peripheral)
+        }
+    }
+    
+    func stringToBytes(str:String) -> [UInt8] {
+        let data = str.data(using: .utf8)!
+        return [UInt8](data)
+    }
     
     func initData(){
         
         //显示和隐藏控件
-        nameLb?.text = mmodel?.name
+        nameLb?.text = (mmodel?.name)! + " - UUID"
         chartLb?.text = String(format:"%@", model!.charater!.uuid)
         
         let ok = model?.status
