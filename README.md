@@ -58,6 +58,16 @@ Alternatively to give it a test run, run the command:
 
 pod try BleManageSwift
 
+
+#### Update 8/25 2022
+
+version 1.0.7
+
+1. modify demo can't send data
+
+2. add send data button
+
+
 ### Update 2020/9/29
 
 version 1.0.7
